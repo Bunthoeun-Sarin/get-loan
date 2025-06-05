@@ -16,7 +16,7 @@
           <h5 class="mb-0">Contact Information</h5>
         </div>
         <div class="card-body">
-          <form id="contact-form">
+          <form id="myForm">
             <div class="mb-3">
               <label for="name" class="form-label">Name *</label>
               <input
@@ -55,30 +55,6 @@
         </div>
       </div>
     </div>
-    <script>
-      const scriptURL =
-        "https://script.google.com/macros/s/AKfycbyFY9YwFJRbndgDbgKwMc_K5QaPmzt6PyJa6EGeBAGb014j10XMQ0mL9WcrrXswwAPoUQ/exec"; // Replace this with your actual URL
-      const form = document.getElementById("contact-form");
-
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const formData = new FormData(form);
-
-        fetch(scriptURL, {
-          method: "POST",
-          body: formData,
-        })
-          .then((response) => response.text())
-          .then((result) => {
-            alert("Form submitted successfully!");
-            form.reset();
-          })
-          .catch((error) => {
-            console.error("Error!", error.message);
-            alert("Submission failed.");
-          });
-      });
-    </script>
   </body>
 </html>
+<script src="script.js"></script>
