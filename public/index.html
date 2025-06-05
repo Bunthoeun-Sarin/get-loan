@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Submit to Google Sheet</title>
+</head>
+<body>
+  <form id="myForm">
+    <input id="name" placeholder="Name" required />
+    <input id="email" type="email" placeholder="Email" required />
+    <input id="phone" placeholder="Phone" required />
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById("myForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const data = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+      };
+
+      fetch("/api/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          alert("Submitted: " + JSON.stringify(json));
+        })
+        .catch((err) => {
+          console.error("Fetch error:", err);
+        });
+    });
+  </script>
+</body>
+</html>
